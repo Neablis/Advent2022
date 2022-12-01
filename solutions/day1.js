@@ -17,7 +17,7 @@ formatted.forEach((element) => {
    }
 });
 
-const formattedElfs = elfs.map((items) => {
+let formattedElfs = elfs.map((items) => {
     let total = 0;
     items.forEach((item) => total += item);
     return {
@@ -28,20 +28,10 @@ const formattedElfs = elfs.map((items) => {
 
 elfs.push(current);
 
-let most = {
-    amount: 0,
-    index: 0
-}
+formattedElfs = formattedElfs.sort((elf1, elf2) => elf2.total - elf1.total)
 
-formattedElfs.forEach((elf, idx) => {
-   if (elf.total >= most.amount) {
-      let newMost = {
-          amount: elf.total,
-          index: idx
-      }
+// Part 1
+console.log(formattedElfs[0]);
 
-      most = newMost;
-   }
-});
-
-console.log({most})
+// Part 2
+console.log(formattedElfs[0].total + formattedElfs[1].total + formattedElfs[2].total)
